@@ -14,7 +14,7 @@ class CartNotifier extends Notifier<List<Product>> {
 
   void removeProduct(Product product){
     final upatedList = [...state];
-    
+
     final index = upatedList.indexWhere(
         (p) => p.id == product.id,
     );
