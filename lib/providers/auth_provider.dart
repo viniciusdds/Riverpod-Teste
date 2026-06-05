@@ -36,4 +36,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
       );
     }
   }
+
+  Future<void> logout() async {
+    state = AuthState();
+  }
 }

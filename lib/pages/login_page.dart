@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meu_app_riverpod/pages/home_page.dart';
 
 import 'package:meu_app_riverpod/providers/providers.dart';
 
@@ -22,13 +23,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen>{
 
     ref.listen(authProvider, (previous, next) {
 
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(
+      //     const SnackBar(
+      //        content: Text('Login realizado')
+      //     )
+      // );
+
       if(next.user != null) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(
-            const SnackBar(
-                content: Text('Login realizado')
-            )
-        );
+         Navigator.pushReplacement(
+             context,
+             MaterialPageRoute(
+                 builder: (_) => HomeScreen(
+                  // user: next.user!,
+                 )
+             ),
+         );
       }
 
       if(next.error != null){
